@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "User.Application": {
+    "UserCenter.Application": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
