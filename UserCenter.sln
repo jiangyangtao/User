@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{198ADE59-F82
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{53384438-9D92-405B-9EA0-3A4157D2054B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCenter.Application", "src\User.Application\UserCenter.Application.csproj", "{5B2D5945-9A3D-44B1-A6E1-78FAE5E9F1AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCenter.Application", "src\UserCenter.Application\UserCenter.Application.csproj", "{5B2D5945-9A3D-44B1-A6E1-78FAE5E9F1AB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCenter.Core", "src\User.Core\UserCenter.Core.csproj", "{9D75DFB2-9233-4604-996E-4891C1BEF71B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCenter.Core", "src\UserCenter.Core\UserCenter.Core.csproj", "{9D75DFB2-9233-4604-996E-4891C1BEF71B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCenter.Model", "src\User.Model\UserCenter.Model.csproj", "{0FC15BB8-2487-48E3-A06B-63F52AF1408D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCenter.Model", "src\UserCenter.Model\UserCenter.Model.csproj", "{0FC15BB8-2487-48E3-A06B-63F52AF1408D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
