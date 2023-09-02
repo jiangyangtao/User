@@ -2,7 +2,7 @@
 using Yangtao.Hosting.Extensions;
 using Yangtao.Hosting.Repository.Abstractions;
 
-namespace User.Model
+namespace UserCenter.Model
 {
     public class User : BaseEntity
     {

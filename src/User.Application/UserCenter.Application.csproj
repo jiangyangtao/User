@@ -17,4 +17,8 @@
 	<PackageReference Include="IdentityAuthentication.TokenValidation" Version="1.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\User.Core\UserCenter.Core.csproj" />
+  </ItemGroup>
+
 </Project>

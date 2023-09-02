@@ -1,6 +1,6 @@
-﻿using User.Model;
+﻿using UserCenter.Model;
 
-namespace User.Core.Abstracts
+namespace UserCenter.Core.Abstracts
 {
     public interface IUserProvider
     {

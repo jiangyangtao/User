@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace User.Core
+namespace UserCenter.Core
 {
     internal class PasswordService
     {

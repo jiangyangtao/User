@@ -1,6 +1,6 @@
 ﻿using Yangtao.Hosting.Controller;
 
-namespace User.Application.Controllers
+namespace UserCenter.Application.Controllers
 {
     public class UserController : BaseApiController
     {

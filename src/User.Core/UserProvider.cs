@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using User.Core.Abstracts;
-using User.Model;
+using UserCenter.Core.Abstracts;
+using UserCenter.Model;
 using Yangtao.Hosting.Core.HttpErrorResult;
 using Yangtao.Hosting.Extensions;
 using Yangtao.Hosting.Repository.Abstractions;
 
-namespace User.Core
+namespace UserCenter.Core
 {
     public class UserProvider : IUserProvider
     {

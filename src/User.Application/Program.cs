@@ -3,7 +3,7 @@ using Yangtao.Hosting.Endpoint;
 using Yangtao.Hosting.Mvc;
 using Yangtao.Hosting.NLog;
 
-namespace User.Application
+namespace UserCenter.Application
 {
     public class Program
     {
