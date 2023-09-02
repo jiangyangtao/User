@@ -18,7 +18,7 @@ namespace UserCenter.Core
 
         public async Task AddAsync(string userName, string password)
         {
-            var exist = await _userRepository.Get(a => a.Username == userName).AnyAsync();
+            var exist = await ExistAsync(userName);
             if (exist) HttpErrorResult.ResponseBadRequest($"{userName} already exist");
 
             using var handler = PasswordHandler.CreateHandler(password);
@@ -49,6 +49,8 @@ namespace UserCenter.Core
             await _userRepository.UpdatePartAsync(data, a => a.Password);
         }
 
+        public Task<bool> ExistAsync(string userName) => _userRepository.Get(a => a.Username == userName).AnyAsync();
+
         public Task<long> GetUserCountAsync(UserQueryParams queryParams)
         {
             var query = queryParams.GetQueryable(_userRepository);
@@ -66,6 +68,22 @@ namespace UserCenter.Core
             if (users.IsNullOrEmpty()) return Array.Empty<UserRole>();
 
             return users;
+        }
+
+        public async Task<UserInfo?> LoginAsync(string userName, string password)
+        {
+            var user = await _userRepository.Get(a => a.Username == userName).FirstOrDefaultAsync();
+            if (user == null) return null;
+
+            using var handler = PasswordHandler.CreateHandler(user, password);
+            var comparisonResult = handler.PasswordComparison();
+            if (comparisonResult == false) return null;
+
+            return new UserInfo()
+            {
+                UserId = user.Id,
+                Username = userName,
+            };
         }
 
         public async Task RemoveAsync(string userId) => await _userRepository.DeleteByIdAsync(userId);

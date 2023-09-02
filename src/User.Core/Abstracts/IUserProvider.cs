@@ -10,8 +10,12 @@ namespace UserCenter.Core.Abstracts
 
         Task ChangePasswordAsync(UserPassword user);
 
+        Task<bool> ExistAsync(string userName);
+
         Task<UserRole[]> GetUsersAsync(UserQueryParams queryParams);
 
         Task<long> GetUserCountAsync(UserQueryParams queryParams);
+
+        Task<UserInfo?> LoginAsync(string userName, string password);
     }
 }

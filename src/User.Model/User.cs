@@ -63,6 +63,16 @@ namespace UserCenter.Model
         public string? Avatar { set; get; }
     }
 
+    public class UserInfo
+    {
+        public string UserId { set; get; }
+
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        public string Username { set; get; }
+    }
+
     public class UserQueryParams : PaginationBase
     {
         /// <summary>
