@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace User.Core.Abstracts
 {
-    internal class IUserProvider
+    public interface IUserProvider
     {
     }
 }

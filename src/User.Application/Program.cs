@@ -1,3 +1,8 @@
+using IdentityAuthentication.TokenValidation;
+using Yangtao.Hosting.Endpoint;
+using Yangtao.Hosting.Mvc;
+using Yangtao.Hosting.NLog;
+
 namespace User.Application
 {
     public class Program
@@ -5,13 +10,20 @@ namespace User.Application
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            // Add NLog
+            builder.Logging.ConfigNLog();
 
             // Add services to the container.
+            var services = builder.Services;
+            var configuration = builder.Configuration;
 
-            builder.Services.AddControllers();
+            services.AddAllowAnyCors();
+            services.AddControllers();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            services.AddEndpointsApiExplorer();
+            services.AddApiVersion();
+            services.AddSwaggerGen();
 
             var app = builder.Build();
 
@@ -22,13 +34,14 @@ namespace User.Application
                 app.UseSwaggerUI();
             }
 
+            app.UseCors();
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
+            app.UseIdentityAuthentication();
 
             app.MapControllers();
-
+            app.UseEnumConfigurationEndpoint();
+            app.Map("/", () => "Hello User Service"); // ื๎ะก API
             app.Run();
         }
     }
