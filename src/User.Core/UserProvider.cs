@@ -9,9 +9,9 @@ namespace UserCenter.Core
 {
     public class UserProvider : IUserProvider
     {
-        private readonly IEntityRepositoryProvider<Model.User> _userRepository;
+        private readonly IEntityRepositoryProvider<User> _userRepository;
 
-        public UserProvider(IEntityRepositoryProvider<Model.User> userRepository)
+        public UserProvider(IEntityRepositoryProvider<User> userRepository)
         {
             _userRepository = userRepository;
         }
