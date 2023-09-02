@@ -21,17 +21,38 @@ namespace UserCenter.Core
             var exist = await _userRepository.Get(a => a.Username == userName).AnyAsync();
             if (exist) HttpErrorResult.ResponseBadRequest($"{userName} already exist");
 
-           
+            using var handler = PasswordHandler.CreateHandler(password);
+            var encryptedPassword = handler.Encrypt();
+
+            var user = new User
+            {
+                Username = userName,
+                Password = encryptedPassword,
+                Slat = handler.PasswordSlat,
+                NeedChangePassword = false,
+            };
+
+            await _userRepository.AddAsync(user);
         }
 
-        public Task ChangePasswordAsync(UserPassword user)
+        public async Task ChangePasswordAsync(UserPassword user)
         {
-            throw new NotImplementedException();
+            var data = await _userRepository.Get(a => a.Username == user.Username).FirstOrDefaultAsync();
+            if (data == null) HttpErrorResult.ResponseBadRequest($"{user.Username} not exist");
+
+            using var handler = PasswordHandler.CreateHandler(data, user.OldPassword);
+            var comparisonResult = handler.PasswordComparison();
+            if (comparisonResult == false) HttpErrorResult.ResponseBadRequest($"{user.Username} user or password is incorrect.");
+
+            var newPassword = handler.EncryptNewPassword(user.NewPassword);
+            data.Password = newPassword;
+            await _userRepository.UpdatePartAsync(data, a => a.Password);
         }
 
         public Task<long> GetUserCountAsync(UserQueryParams queryParams)
         {
-            throw new NotImplementedException();
+            var query = queryParams.GetQueryable(_userRepository);
+            return query.LongCountAsync();
         }
 
         public async Task<UserRole[]> GetUsersAsync(UserQueryParams queryParams)
@@ -47,9 +68,6 @@ namespace UserCenter.Core
             return users;
         }
 
-        public Task RemoveAsync(string userId)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task RemoveAsync(string userId) => await _userRepository.DeleteByIdAsync(userId);
     }
 }
