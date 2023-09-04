@@ -51,6 +51,18 @@ namespace UserCenter.Core
 
         public Task<bool> ExistAsync(string userName) => _userRepository.Get(a => a.Username == userName).AnyAsync();
 
+        public async Task<UserInfo?> GetByIdAsync(string userId)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+            if (user == null) return null;
+
+            return new UserInfo
+            {
+                UserId = user.Id,
+                Username = user.Username,
+            };
+        }
+
         public Task<long> GetUserCountAsync(UserQueryParams queryParams)
         {
             var query = queryParams.GetQueryable(_userRepository);
