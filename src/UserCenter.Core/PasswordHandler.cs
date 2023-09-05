@@ -46,7 +46,7 @@ namespace UserCenter.Core
             }
         }
 
-        public static PasswordHandler CreateHandler(string password) => new(password);
+        public static PasswordHandler CreateHandler(string plaintextPassword) => new(plaintextPassword);
 
         public static PasswordHandler CreateHandler(User user, string plaintextPassword) => new(user.Slat, user.Password, plaintextPassword);
 
@@ -65,7 +65,7 @@ namespace UserCenter.Core
         /// <returns>True 则比对成功，false 则比对失败</returns>
         public bool PasswordComparison()
         {
-            var slatPassword = BuildSlatPassword();
+            var slatPassword = BuildSlatPassword(PlaintextPassword);
             return slatPassword == EncryptedPassword;
         }
 
