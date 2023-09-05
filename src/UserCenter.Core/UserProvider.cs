@@ -74,6 +74,7 @@ namespace UserCenter.Core
             var query = queryParams.GetQueryable(_userRepository);
             var users = await query.OrderByDescending(a => a.CreateTime).Skip(queryParams.Start).Take(queryParams.Size).Select(a => new UserRole
             {
+                UserId = a.Id,
                 Username = a.Username,
                 Avatar = a.Avatar,
             }).ToArrayAsync();
