@@ -11,11 +11,13 @@ namespace UserCenter.Core
     internal class RoleProvider : IRoleProvider
     {
         private readonly IEntityRepositoryProvider<Role> _roleRepository;
+        private readonly IUserRoleProvider _userRoleProvider;
 
         public RoleProvider(
-            IEntityRepositoryProvider<Role> roleRepository)
+            IEntityRepositoryProvider<Role> roleRepository, IUserRoleProvider userRoleProvider)
         {
             _roleRepository = roleRepository;
+            _userRoleProvider = userRoleProvider;
         }
 
         public async Task AddAsync(string roleName, string description)
@@ -26,8 +28,8 @@ namespace UserCenter.Core
             await _roleRepository.AddAsync(new Role { RoleName = roleName, Description = description });
         }
 
-        public Task<RoleInfo?> GetRoleAsync(string roleId) =>
-            _roleRepository.Get(a => a.Id == roleId).Select(a => new RoleInfo
+        public Task<RoleBaseInfo?> GetRoleAsync(string roleId) =>
+            _roleRepository.Get(a => a.Id == roleId).Select(a => new RoleBaseInfo
             {
                 RoleId = a.Id,
                 RoleName = a.RoleName,
@@ -42,23 +44,24 @@ namespace UserCenter.Core
             return query.LongCountAsync();
         }
 
-        public async Task<RoleUserInfo[]> GetRolesAsync(RoleQueryParams queryParams)
+        public async Task<RoleInfo[]> GetRolesAsync(RoleQueryParams queryParams)
         {
             var query = queryParams.GetQueryable(_roleRepository);
-            var list = await query.DefaultOrderPagination(queryParams).Select(a => new RoleUserInfo
+            var list = await query.DefaultOrderPagination(queryParams).Select(a => new RoleInfo
             {
                 RoleId = a.Id,
                 RoleName = a.RoleName,
                 Description = a.Description,
             }).ToArrayAsync();
-            if (list.IsNullOrEmpty()) return Array.Empty<RoleUserInfo>();
+            if (list.IsNullOrEmpty()) return Array.Empty<RoleInfo>();
 
-            return list;
+
+            return await _userRoleProvider.FillUserAsync(list);
         }
 
         public Task RemoveAsync(string roleId) => _roleRepository.DeleteByIdAsync(roleId);
 
-        public Task UpdatteAsync(RoleInfo role) => _roleRepository.UpdateIfExistByIdAsync(role.RoleId, a =>
+        public Task UpdatteAsync(RoleBaseInfo role) => _roleRepository.UpdateIfExistByIdAsync(role.RoleId, a =>
             {
                 a.RoleName = role.RoleName;
                 a.Description = role.Description;

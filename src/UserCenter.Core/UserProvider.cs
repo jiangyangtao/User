@@ -10,10 +10,14 @@ namespace UserCenter.Core
     public class UserProvider : IUserProvider
     {
         private readonly IEntityRepositoryProvider<User> _userRepository;
+        private readonly IUserRoleProvider _userRoleProvider;
 
-        public UserProvider(IEntityRepositoryProvider<User> userRepository)
+        public UserProvider(
+            IEntityRepositoryProvider<User> userRepository,
+            IUserRoleProvider userRoleProvider)
         {
             _userRepository = userRepository;
+            _userRoleProvider = userRoleProvider;
         }
 
         public async Task AddAsync(string userName, string password)
@@ -80,7 +84,7 @@ namespace UserCenter.Core
             }).ToArrayAsync();
             if (users.IsNullOrEmpty()) return Array.Empty<UserInfo>();
 
-            return users;
+            return await _userRoleProvider.FillRoleAsync(users);
         }
 
         public async Task<UserBaseInfo?> LoginAsync(string userName, string password)

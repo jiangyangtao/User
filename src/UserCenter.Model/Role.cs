@@ -11,7 +11,7 @@ namespace UserCenter.Model
         public string Description { set; get; }
     }
 
-    public class RoleInfo
+    public class RoleBaseInfo
     {
         public string RoleId { set; get; }
 
@@ -20,7 +20,7 @@ namespace UserCenter.Model
         public string Description { set; get; }
     }
 
-    public class RoleUserInfo : RoleInfo
+    public class RoleInfo : RoleBaseInfo
     {
         public User[] Users { set; get; }
     }

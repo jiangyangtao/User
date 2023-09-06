@@ -1,8 +1,10 @@
 ﻿
 
+using Yangtao.Hosting.Repository.Abstractions;
+
 namespace UserCenter.Model
 {
-    public class UserRole
+    public class UserRole : BaseEntity
     {
         public string UserId { set; get; }
 

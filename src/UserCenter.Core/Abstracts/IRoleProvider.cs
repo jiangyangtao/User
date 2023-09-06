@@ -6,14 +6,14 @@ namespace UserCenter.Core.Abstracts
     {
         Task AddAsync(string roleName, string description);
 
-        Task UpdatteAsync(RoleInfo role);
+        Task UpdatteAsync(RoleBaseInfo role);
 
         Task RemoveAsync(string roleId);
 
-        Task<RoleUserInfo[]> GetRolesAsync(RoleQueryParams queryParams);
+        Task<RoleInfo[]> GetRolesAsync(RoleQueryParams queryParams);
 
         Task<long> GetRoleCountAsync(RoleQueryParams queryParams);
 
-        Task<RoleInfo?> GetRoleAsync(string roleId);
+        Task<RoleBaseInfo?> GetRoleAsync(string roleId);
     }
 }

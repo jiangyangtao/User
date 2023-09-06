@@ -12,6 +12,7 @@ namespace UserCenter.Core
 
             services.AddScoped<IUserProvider, UserProvider>();
             services.AddScoped<IRoleProvider, RoleProvider>();
+            services.AddScoped<IUserRoleProvider, UserRoleProvider>();
 
             return services;
         }
