@@ -51,12 +51,12 @@ namespace UserCenter.Core
 
         public Task<bool> ExistAsync(string userName) => _userRepository.Get(a => a.Username == userName).AnyAsync();
 
-        public async Task<UserInfo?> GetByIdAsync(string userId)
+        public async Task<UserBaseInfo?> GetByIdAsync(string userId)
         {
             var user = await _userRepository.GetByIdAsync(userId);
             if (user == null) return null;
 
-            return new UserInfo
+            return new UserBaseInfo
             {
                 UserId = user.Id,
                 Username = user.Username,
@@ -69,21 +69,21 @@ namespace UserCenter.Core
             return query.LongCountAsync();
         }
 
-        public async Task<UserRole[]> GetUsersAsync(UserQueryParams queryParams)
+        public async Task<UserInfo[]> GetUsersAsync(UserQueryParams queryParams)
         {
             var query = queryParams.GetQueryable(_userRepository);
-            var users = await query.OrderByDescending(a => a.CreateTime).Skip(queryParams.Start).Take(queryParams.Size).Select(a => new UserRole
+            var users = await query.OrderByDescending(a => a.CreateTime).Skip(queryParams.Start).Take(queryParams.Size).Select(a => new UserInfo
             {
                 UserId = a.Id,
                 Username = a.Username,
                 Avatar = a.Avatar,
             }).ToArrayAsync();
-            if (users.IsNullOrEmpty()) return Array.Empty<UserRole>();
+            if (users.IsNullOrEmpty()) return Array.Empty<UserInfo>();
 
             return users;
         }
 
-        public async Task<UserInfo?> LoginAsync(string userName, string password)
+        public async Task<UserBaseInfo?> LoginAsync(string userName, string password)
         {
             var user = await _userRepository.Get(a => a.Username == userName).FirstOrDefaultAsync();
             if (user == null) return null;
@@ -92,7 +92,7 @@ namespace UserCenter.Core
             var comparisonResult = handler.PasswordComparison();
             if (comparisonResult == false) return null;
 
-            return new UserInfo()
+            return new UserBaseInfo()
             {
                 UserId = user.Id,
                 Username = userName,

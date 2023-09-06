@@ -50,7 +50,7 @@ namespace UserCenter.Model
         public string NewPassword { set; get; }
     }
 
-    public class UserInfo
+    public class UserBaseInfo
     {
         public string UserId { set; get; }
 
@@ -60,12 +60,14 @@ namespace UserCenter.Model
         public string Username { set; get; }
     }
 
-    public class UserRole : UserInfo
+    public class UserInfo : UserBaseInfo
     {
         /// <summary>
         /// 头像
         /// </summary>
         public string? Avatar { set; get; }
+
+        public Role[] Roles { set; get; }
     }
 
     public class UserQueryParams : PaginationBase

@@ -70,7 +70,7 @@ namespace UserCenter.Application.Dto
 
     public class UserRoleResult : UserNameDtoBase
     {
-        public UserRoleResult(UserRole user)
+        public UserRoleResult(UserInfo user)
         {
             UserId = user.UserId;
             Username = user.Username;
@@ -91,7 +91,7 @@ namespace UserCenter.Application.Dto
 
     public class UserRolePaginationResult : PaginationResult<UserRoleResult>
     {
-        public UserRolePaginationResult(UserRole[] users, long count) : base(count)
+        public UserRolePaginationResult(UserInfo[] users, long count) : base(count)
         {
             List = users.Select(a => new UserRoleResult(a)).ToArray();
         }

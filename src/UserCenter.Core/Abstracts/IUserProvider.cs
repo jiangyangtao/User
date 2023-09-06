@@ -12,12 +12,12 @@ namespace UserCenter.Core.Abstracts
 
         Task<bool> ExistAsync(string userName);
 
-        Task<UserRole[]> GetUsersAsync(UserQueryParams queryParams);
+        Task<UserInfo[]> GetUsersAsync(UserQueryParams queryParams);
 
         Task<long> GetUserCountAsync(UserQueryParams queryParams);
 
-        Task<UserInfo?> LoginAsync(string userName, string password);
+        Task<UserBaseInfo?> LoginAsync(string userName, string password);
 
-        Task<UserInfo?> GetByIdAsync(string userId);
+        Task<UserBaseInfo?> GetByIdAsync(string userId);
     }
 }
