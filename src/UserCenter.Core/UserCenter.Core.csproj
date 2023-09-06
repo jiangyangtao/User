@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -7,8 +7,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Yangtao.Hosting.Core" Version="1.0.0-alpha2.9.6" />
-		<PackageReference Include="Yangtao.Hosting.Repository.MySql" Version="1.0.0-alpha2.9.6" />
+		<PackageReference Include="Yangtao.Hosting.Core" Version="1.0.0-alpha2.9.8" />
+		<PackageReference Include="Yangtao.Hosting.Repository.MySql" Version="1.0.0-alpha2.9.8" />
 	</ItemGroup>
 
 	<ItemGroup>

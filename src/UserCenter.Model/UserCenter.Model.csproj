@@ -7,7 +7,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Yangtao.Hosting.Repository.Abstractions" Version="1.0.0-alpha2.9.7" />
+		<PackageReference Include="Yangtao.Hosting.Repository.Abstractions" Version="1.0.0-alpha2.9.8" />
 	</ItemGroup>
 	
 </Project>

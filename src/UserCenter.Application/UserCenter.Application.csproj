@@ -11,9 +11,9 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-	<PackageReference Include="Yangtao.Hosting.Controller" Version="1.0.0-alpha2.9.6" />
-	<PackageReference Include="Yangtao.Hosting.Endpoint" Version="1.0.0-alpha2.9.6" />
-	<PackageReference Include="Yangtao.Hosting.NLog" Version="1.0.0-alpha2.9.6" />
+	<PackageReference Include="Yangtao.Hosting.Controller" Version="1.0.0-alpha2.9.8" />
+	<PackageReference Include="Yangtao.Hosting.Endpoint" Version="1.0.0-alpha2.9.8" />
+	<PackageReference Include="Yangtao.Hosting.NLog" Version="1.0.0-alpha2.9.8" />
 	<PackageReference Include="IdentityAuthentication.TokenValidation" Version="1.0.11" />
   </ItemGroup>
 

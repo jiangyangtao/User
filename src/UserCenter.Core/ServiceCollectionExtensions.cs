@@ -11,6 +11,7 @@ namespace UserCenter.Core
             services.AddRepository();
 
             services.AddScoped<IUserProvider, UserProvider>();
+            services.AddScoped<IRoleProvider, RoleProvider>();
 
             return services;
         }
