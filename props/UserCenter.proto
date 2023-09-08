@@ -1,0 +1,32 @@
+syntax = "proto3";
+import "ErrorResult.proto";
+
+option csharp_namespace = "UserCenter.GrpcProviders";
+
+package UserGrpc;
+
+service UserGrpcProvider{
+	rpc Login(LoginRequest) returns (UserResponse);
+	rpc GetUser(GetUserRequest) returns (UserResponse);
+}
+
+message LoginRequest{
+	string Username=1;
+	string Passwrod=2;
+}
+
+message UserInfo{
+	string UserId=1;
+	string Username=2;
+}
+
+message UserResponse{
+	oneof result{
+		Grpc.Common.ErrorResult Error = 1;
+		UserInfo Result = 2;
+	}
+}
+
+message GetUserRequest{
+	string UserId=1;
+}

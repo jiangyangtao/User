@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "Hosting.Grpc.Common";
+
+package Grpc.Common;
+
+
+message ErrorResult{
+	int32 Code=1;
+	string Message=2;
+}
+
