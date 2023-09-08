@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{38FA428D
 		props\UserCenter.proto = props\UserCenter.proto
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserCenter.GrpcClient", "src\GrpcClient\UserCenter.GrpcClient\UserCenter.GrpcClient.csproj", "{20655E9D-E5D7-4382-8A09-032661B836D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GrpcClient", "GrpcClient", "{0A0B037E-07ED-4462-9C98-EEFD85E0750B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,10 @@ Global
 		{0FC15BB8-2487-48E3-A06B-63F52AF1408D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FC15BB8-2487-48E3-A06B-63F52AF1408D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FC15BB8-2487-48E3-A06B-63F52AF1408D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20655E9D-E5D7-4382-8A09-032661B836D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20655E9D-E5D7-4382-8A09-032661B836D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20655E9D-E5D7-4382-8A09-032661B836D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20655E9D-E5D7-4382-8A09-032661B836D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +53,8 @@ Global
 		{5B2D5945-9A3D-44B1-A6E1-78FAE5E9F1AB} = {198ADE59-F826-4981-89FD-4F717EC247F2}
 		{9D75DFB2-9233-4604-996E-4891C1BEF71B} = {198ADE59-F826-4981-89FD-4F717EC247F2}
 		{0FC15BB8-2487-48E3-A06B-63F52AF1408D} = {198ADE59-F826-4981-89FD-4F717EC247F2}
+		{20655E9D-E5D7-4382-8A09-032661B836D1} = {0A0B037E-07ED-4462-9C98-EEFD85E0750B}
+		{0A0B037E-07ED-4462-9C98-EEFD85E0750B} = {198ADE59-F826-4981-89FD-4F717EC247F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDF12DD7-EFB0-4290-A65B-9BFF399CBB8F}
