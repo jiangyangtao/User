@@ -13,10 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCenter.Core", "src\User
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCenter.Model", "src\UserCenter.Model\UserCenter.Model.csproj", "{0FC15BB8-2487-48E3-A06B-63F52AF1408D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{38FA428D-88C4-4995-A792-693F62AB7D20}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "protos", "protos", "{38FA428D-88C4-4995-A792-693F62AB7D20}"
 	ProjectSection(SolutionItems) = preProject
-		props\ErrorResult.proto = props\ErrorResult.proto
-		props\UserCenter.proto = props\UserCenter.proto
+		protos\ErrorResult.proto = protos\ErrorResult.proto
+		protos\User.proto = protos\User.proto
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserCenter.GrpcClient", "src\GrpcClient\UserCenter.GrpcClient\UserCenter.GrpcClient.csproj", "{20655E9D-E5D7-4382-8A09-032661B836D1}"

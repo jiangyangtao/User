@@ -1,11 +1,11 @@
 syntax = "proto3";
 import "ErrorResult.proto";
 
-option csharp_namespace = "UserCenter.GrpcProviders";
+option csharp_namespace = "UserCenter.GrpcServices";
 
 package UserGrpc;
 
-service UserGrpcProvider{
+service UserGrpcService{
 	rpc Login(LoginRequest) returns (UserResponse);
 	rpc GetUser(GetUserRequest) returns (UserResponse);
 }

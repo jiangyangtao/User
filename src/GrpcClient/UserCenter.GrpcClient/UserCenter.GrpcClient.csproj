@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -6,4 +6,22 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+
+	<ItemGroup>
+		<PackageReference Include="Google.Protobuf" Version="3.21.0" />
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.46.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.46.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Protobuf Include="..\..\..\protos\ErrorResult.proto" GrpcServices="Client" />
+		<Protobuf Include="..\..\..\protos\User.proto" GrpcServices="Client" />
+	</ItemGroup>
+	
 </Project>
