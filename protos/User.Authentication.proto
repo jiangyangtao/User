@@ -6,8 +6,8 @@ option csharp_namespace = "UserCenter.GrpcServices";
 package UserGrpc;
 
 service UserAuthenticationGrpcService{
-	rpc Login(LoginRequest) returns (UserResponse);
-	rpc Validation(ValidationUserRequest) returns (UserResponse);
+	rpc Login(LoginRequest) returns (UserAuthenticationResponse);
+	rpc Validation(ValidationUserRequest) returns (UserAuthenticationResponse);
 }
 
 message LoginRequest{
@@ -20,7 +20,7 @@ message UserInfo{
 	string Username=2;
 }
 
-message UserResponse{
+message UserAuthenticationResponse{
 	oneof result{
 		Grpc.Common.ErrorResult Error = 1;
 		UserInfo Result = 2;

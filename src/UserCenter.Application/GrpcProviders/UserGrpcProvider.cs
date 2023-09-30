@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
-using Hosting.Grpc.Common;
 using UserCenter.Core.Abstractions;
 using UserCenter.GrpcServices;
+using Yangtao.Hosting.Extensions;
 
 namespace UserCenter.Application.GrpcProviders
 {
@@ -14,22 +14,25 @@ namespace UserCenter.Application.GrpcProviders
             _userProvider = userProvider;
         }
 
-        public override async Task<UserResponse> Login(LoginRequest request, ServerCallContext context)
-        {
-            var user = await _userProvider.LoginAsync(request.Username, request.Passwrod);
-            if (user == null) return new UserResponse { Error = new ErrorResult { Code = 1, Message = "用户名或密码错误" } };
-
-            var info = new UserInfo { UserId = user.UserId, Username = user.Username, };
-            return new UserResponse { Result = info };
-        }
-
-        public override async Task<UserResponse> Validation(ValidationUserRequest request, ServerCallContext context)
+        public override async Task<UserResponse> GetById(UserIdRequest request, ServerCallContext context)
         {
             var user = await _userProvider.GetByIdAsync(request.UserId);
-            if (user == null) return new UserResponse() { Error = new ErrorResult { Code = -1, Message = "账号已停用" } };
+            if (user == null) return new UserResponse { UserId = string.Empty, Username = string.Empty };
 
-            var info = new UserInfo { UserId = user.UserId, Username = user.Username, };
-            return new UserResponse { Result = info };
+            return new UserResponse { UserId = user.UserId, Username = user.Username };
+        }
+
+        public override async Task<UsersResponse> GetUsers(UserIdsRequest request, ServerCallContext context)
+        {
+            var userIds = request.UserIds.ToArray();
+            var users = await _userProvider.GetUsersAsync(userIds);
+            if (users.IsNullOrEmpty()) return new UsersResponse();
+
+            var userResponses = users.Select(a => new UserResponse { UserId = a.UserId, Username = a.Username }).ToArray();
+            var usersResponse = new UsersResponse();
+            usersResponse.Users.AddRange(userResponses);
+
+            return usersResponse;
         }
     }
 }

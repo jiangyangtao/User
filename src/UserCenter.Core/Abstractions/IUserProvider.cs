@@ -14,6 +14,8 @@ namespace UserCenter.Core.Abstractions
 
         Task<UserInfo[]> GetUsersAsync(UserQueryParams queryParams);
 
+        Task<UserBaseInfo[]> GetUsersAsync(string[] userIds);
+
         Task<long> GetUserCountAsync(UserQueryParams queryParams);
 
         Task<UserBaseInfo?> LoginAsync(string userName, string password);

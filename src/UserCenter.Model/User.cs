@@ -52,6 +52,16 @@ namespace UserCenter.Model
 
     public class UserBaseInfo
     {
+        public UserBaseInfo()
+        {
+        }
+
+        public UserBaseInfo(User user)
+        {
+            UserId = user.Id;
+            Username = user.Username;
+        }
+
         public string UserId { set; get; }
 
         /// <summary>

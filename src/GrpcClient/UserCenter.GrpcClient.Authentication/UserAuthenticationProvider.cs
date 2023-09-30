@@ -11,15 +11,15 @@ namespace UserCenter.GrpcClient.Authentication
             _userAuthenticationClient = userAuthenticationClient;
         }
 
-        public async Task<UserResponse> LoginAsync(string username, string password)
+        public async Task<UserAuthenticationResponse> LoginAsync(string username, string password)
         {
             var resuest = new LoginRequest { Username = username, Passwrod = password };
             return await _userAuthenticationClient.LoginAsync(resuest);
         }
 
-        public async Task<UserResponse> ValidationAsync(string userId)
+        public async Task<UserAuthenticationResponse> ValidationAsync(string userId)
         {
-            if (string.IsNullOrEmpty(userId)) return new UserResponse
+            if (string.IsNullOrEmpty(userId)) return new UserAuthenticationResponse
             {
                 Error = new Hosting.Grpc.Common.ErrorResult()
                 {

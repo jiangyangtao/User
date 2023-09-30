@@ -26,6 +26,7 @@
 	<ItemGroup>
 		<Protobuf Include="..\..\protos\ErrorResult.proto" GrpcServices="Server" />
 		<Protobuf Include="..\..\protos\User.proto" GrpcServices="Server" />
+		<Protobuf Include="..\..\protos\User.Authentication.proto" GrpcServices="Server" />
 	</ItemGroup>
 
 </Project>

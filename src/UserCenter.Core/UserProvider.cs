@@ -87,6 +87,16 @@ namespace UserCenter.Core
             return await _userRoleProvider.FillRoleAsync(users);
         }
 
+        public async Task<UserBaseInfo[]> GetUsersAsync(string[] userIds)
+        {
+            if (userIds.IsNullOrEmpty()) return Array.Empty<UserBaseInfo>();
+
+            var users = await _userRepository.Get(a => userIds.Contains(a.Id)).ToArrayAsync();
+            if (users.IsNullOrEmpty()) return Array.Empty<UserBaseInfo>();
+
+            return users.Select(a => new UserBaseInfo(a)).ToArray();
+        }
+
         public async Task<UserBaseInfo?> LoginAsync(string userName, string password)
         {
             var user = await _userRepository.Get(a => a.Username == userName).FirstOrDefaultAsync();

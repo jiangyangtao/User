@@ -1,4 +1,5 @@
 using IdentityAuthentication.TokenValidation;
+using UserCenter.Application.GrpcProviders;
 using Yangtao.Hosting.Endpoint;
 using Yangtao.Hosting.Mvc;
 using Yangtao.Hosting.NLog;
@@ -41,6 +42,10 @@ namespace UserCenter.Application
 
             app.MapControllers();
             app.UseEnumConfigurationEndpoint();
+
+            app.MapGrpcService<UserGrpcProvider>();
+            app.MapGrpcService<UserAuthenticationGrpcProvider>();
+
             app.Map("/", () => "Hello User Service"); // ื๎ะก API
             app.Run();
         }
