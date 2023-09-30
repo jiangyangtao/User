@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UserCenter.Application.Dto;
-using UserCenter.Core.Abstracts;
+using UserCenter.Core.Abstractions;
 using Yangtao.Hosting.Controller;
 
 namespace UserCenter.Application.Controllers

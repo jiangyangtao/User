@@ -1,6 +1,6 @@
 ﻿using Grpc.Core;
 using Hosting.Grpc.Common;
-using UserCenter.Core.Abstracts;
+using UserCenter.Core.Abstractions;
 using UserCenter.GrpcServices;
 
 namespace UserCenter.Application.GrpcProviders
