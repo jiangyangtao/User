@@ -1,26 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UserCenter.GrpcServices;
+﻿using UserCenter.GrpcServices;
 
 namespace UserCenter.GrpcClient
 {
     internal class UserGrpcClientProvider : IUserGrpcClientProvider
     {
-        public UserGrpcClientProvider()
+        private readonly UserGrpcService.UserGrpcServiceClient _userGrpcClient;
+
+        public UserGrpcClientProvider(UserGrpcService.UserGrpcServiceClient userGrpcClient)
         {
+            _userGrpcClient = userGrpcClient;
         }
 
-        public Task<UserResponse> LoginAsync(string userName, string password)
+        public async Task<UserResponse> LoginAsync(string username, string password)
         {
-            throw new NotImplementedException();
+            var resuest = new LoginRequest { Username = username, Passwrod = password };
+            return await _userGrpcClient.LoginAsync(resuest);
         }
 
-        public Task<UserResponse> ValidationAsync(string userId)
+        public async Task<UserResponse> ValidationAsync(string userId)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(userId)) return new UserResponse
+            {
+                Error = new Hosting.Grpc.Common.ErrorResult()
+                {
+                    Code = -1,
+                    Message = "UserId can not be empty or null."
+                }
+            };
+
+            var request = new ValidationUserRequest() { UserId = userId };
+            return await _userGrpcClient.ValidationAsync(request);
         }
     }
 }

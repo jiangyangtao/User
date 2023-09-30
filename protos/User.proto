@@ -7,7 +7,7 @@ package UserGrpc;
 
 service UserGrpcService{
 	rpc Login(LoginRequest) returns (UserResponse);
-	rpc GetUser(GetUserRequest) returns (UserResponse);
+	rpc Validation(ValidationUserRequest) returns (UserResponse);
 }
 
 message LoginRequest{
@@ -27,6 +27,6 @@ message UserResponse{
 	}
 }
 
-message GetUserRequest{
+message ValidationUserRequest{
 	string UserId=1;
 }
