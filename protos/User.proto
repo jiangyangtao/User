@@ -6,27 +6,23 @@ option csharp_namespace = "UserCenter.GrpcServices";
 package UserGrpc;
 
 service UserGrpcService{
-	rpc Login(LoginRequest) returns (UserResponse);
-	rpc Validation(ValidationUserRequest) returns (UserResponse);
+	rpc GetById(UserIdRequest) returns (UserResponse);
+	rpc GetUsers(UserIdsRequest) returns (UsersResponse);
 }
 
-message LoginRequest{
-	string Username=1;
-	string Passwrod=2;
+message UserIdRequest{
+	string UserId=1;
 }
 
-message UserInfo{
+message UserIdsRequest{
+	repeated string UserIds=1;
+}
+
+message UserResponse{
 	string UserId=1;
 	string Username=2;
 }
 
-message UserResponse{
-	oneof result{
-		Grpc.Common.ErrorResult Error = 1;
-		UserInfo Result = 2;
-	}
-}
-
-message ValidationUserRequest{
-	string UserId=1;
+message UsersResponse{
+	repeated UserResponse Users=1;
 }

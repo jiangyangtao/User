@@ -11,25 +11,32 @@ namespace UserCenter.GrpcClient
             _userGrpcClient = userGrpcClient;
         }
 
-        public async Task<UserResponse> LoginAsync(string username, string password)
+        public async Task<UserResponse> GetUserByIdAsync(string userId)
         {
-            var resuest = new LoginRequest { Username = username, Passwrod = password };
-            return await _userGrpcClient.LoginAsync(resuest);
+            var request = new UserIdRequest() { UserId = userId };
+            var response = new UserResponse() { UserId = userId, Username = string.Empty };
+
+            var user = await _userGrpcClient.GetByIdAsync(request);
+            if (user == null) return response;
+
+            response.Username = user.Username;
+            return response;
         }
 
-        public async Task<UserResponse> ValidationAsync(string userId)
+        public async Task<UserResponse[]> GetUsersAsync(string[] userIds)
         {
-            if (string.IsNullOrEmpty(userId)) return new UserResponse
-            {
-                Error = new Hosting.Grpc.Common.ErrorResult()
-                {
-                    Code = -1,
-                    Message = "UserId can not be empty or null."
-                }
-            };
+            if (userIds == null || userIds.Length <= 0) return Array.Empty<UserResponse>();
 
-            var request = new ValidationUserRequest() { UserId = userId };
-            return await _userGrpcClient.ValidationAsync(request);
+            var request = new UserIdsRequest();
+            request.UserIds.AddRange(userIds);
+
+            var response = await _userGrpcClient.GetUsersAsync(request);
+            if (response == null) return Array.Empty<UserResponse>();
+            if (response.Users == null) return Array.Empty<UserResponse>();
+            if (response.Users.Count <= 0) return Array.Empty<UserResponse>();
+
+            var users = response.Users.Select(a => new UserResponse { UserId = a.UserId, Username = a.Username }).ToArray();
+            return users;
         }
     }
 }

@@ -4,8 +4,8 @@ namespace UserCenter.GrpcClient
 {
     public interface IUserGrpcClientProvider
     {
-        Task<UserResponse> LoginAsync(string userName, string password);
+        Task<UserResponse> GetUserByIdAsync(string userId);
 
-        Task<UserResponse> ValidationAsync(string userId);
+        Task<UserResponse[]> GetUsersAsync(string[] userIds);
     }
 }
