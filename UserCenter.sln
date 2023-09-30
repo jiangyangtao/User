@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "protos", "protos", "{38FA428D-88C4-4995-A792-693F62AB7D20}"
 	ProjectSection(SolutionItems) = preProject
 		protos\ErrorResult.proto = protos\ErrorResult.proto
+		protos\User.Authentication.proto = protos\User.Authentication.proto
 		protos\User.proto = protos\User.proto
 	EndProjectSection
 EndProject

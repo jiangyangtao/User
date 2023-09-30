@@ -6,4 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Google.Protobuf" Version="3.21.0" />
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.46.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.46.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Protobuf Include="..\..\..\protos\ErrorResult.proto" GrpcServices="Client" />
+		<Protobuf Include="..\..\..\protos\User.Authentication.proto" GrpcServices="Client" />
+	</ItemGroup>
+	
 </Project>
