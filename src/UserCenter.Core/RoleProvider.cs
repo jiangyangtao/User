@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using UserCenter.Core.Abstracts;
+using UserCenter.Core.Abstractions;
 using UserCenter.Model;
 using Yangtao.Hosting.Core.HttpErrorResult;
 using Yangtao.Hosting.Extensions;

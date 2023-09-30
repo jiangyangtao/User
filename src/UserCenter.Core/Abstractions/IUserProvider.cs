@@ -1,6 +1,6 @@
 ﻿using UserCenter.Model;
 
-namespace UserCenter.Core.Abstracts
+namespace UserCenter.Core.Abstractions
 {
     public interface IUserProvider
     {

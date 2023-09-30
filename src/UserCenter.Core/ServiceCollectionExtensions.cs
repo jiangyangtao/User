@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using UserCenter.Core.Abstracts;
+using UserCenter.Core.Abstractions;
 using Yangtao.Hosting.Repository.MySql;
 
 namespace UserCenter.Core
