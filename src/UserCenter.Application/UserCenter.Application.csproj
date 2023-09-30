@@ -21,4 +21,9 @@
     <ProjectReference Include="..\UserCenter.Core\UserCenter.Core.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<Protobuf Include="..\..\protos\ErrorResult.proto" GrpcServices="Server" />
+		<Protobuf Include="..\..\protos\User.proto" GrpcServices="Server" />
+	</ItemGroup>
+
 </Project>

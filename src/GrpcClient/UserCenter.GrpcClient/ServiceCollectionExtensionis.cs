@@ -21,13 +21,13 @@ namespace UserCenter.GrpcClient
 
 
         public static IServiceCollection AddUserCenterGrpcClient(this IServiceCollection services, string endpoint) 
-            => services.AddUserCenterGrpcClient(a => a.Endpoint = endpoint);       
+            => services.AddUserCenterGrpcClient(a => a.Endpoint = endpoint);
 
         public static IServiceCollection AddUserCenterGrpcClient(this IServiceCollection services, Action<GrpcClientOptions> action)
         {
             var clientOptions = new GrpcClientOptions();
             action(clientOptions);
-
+            
             services.AddGrpcClient<UserGrpcService.UserGrpcServiceClient>(options =>
             {
                 options.Address = new Uri(clientOptions.Endpoint);
@@ -58,7 +58,7 @@ namespace UserCenter.GrpcClient
 
             services.AddHttpContextAccessor();
 
-            services.AddSingleton<IUserGrpcProvider, UserGrpcProvider>();
+            services.AddSingleton<IUserGrpcClientProvider, UserGrpcClientProvider>();
             return services;
         }
     }
