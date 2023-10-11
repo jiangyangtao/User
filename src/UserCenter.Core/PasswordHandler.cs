@@ -48,7 +48,7 @@ namespace UserCenter.Core
 
         public static PasswordHandler CreateHandler(string plaintextPassword) => new(plaintextPassword);
 
-        public static PasswordHandler CreateHandler(User user, string plaintextPassword) => new(user.Slat, user.Password, plaintextPassword);
+        public static PasswordHandler CreateHandler(User user, string plaintextPassword) => new(user.Salt, user.Password, plaintextPassword);
 
         public string Encrypt() => BuildSlatPassword(PlaintextPassword);
 

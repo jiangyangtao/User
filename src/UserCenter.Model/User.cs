@@ -19,7 +19,7 @@ namespace UserCenter.Model
         /// <summary>
         /// 密码盐
         /// </summary>
-        public string Slat { set; get; }
+        public string Salt { set; get; }
 
         /// <summary>
         /// 是否需要修改密码

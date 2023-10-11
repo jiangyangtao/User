@@ -32,7 +32,7 @@ namespace UserCenter.Core
             {
                 Username = userName,
                 Password = encryptedPassword,
-                Slat = handler.PasswordSlat,
+                Salt = handler.PasswordSlat,
                 NeedChangePassword = false,
             };
 
